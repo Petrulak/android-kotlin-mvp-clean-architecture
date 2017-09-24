@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@android:color/black"
+  android:orientation="vertical">
+
+  <TextView
+    android:id="@+id/tv_city"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="City"
+    android:textColor="@android:color/white" />
+
+  <TextView
+    android:id="@+id/tv_visibility"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="-1"
+    android:textColor="@android:color/white" />
+
+  <Button
+    android:id="@+id/btn_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="refresh" />
+</LinearLayout>

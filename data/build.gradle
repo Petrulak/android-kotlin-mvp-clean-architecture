@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+
+def conf = rootProject.ext.config
+
+android {
+
+    compileSdkVersion conf.compileSdkVersion
+    buildToolsVersion conf.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion conf.minSdkVersion
+        targetSdkVersion conf.targetSdkVersion
+        versionCode conf.versionCode
+    }
+}
+
+dependencies {
+
+    implementation project(":domain")
+
+    /* Networking */
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.squareup.okhttp3:okhttp:3.7.0'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+
+    /* Storage */
+    compile 'android.arch.persistence.room:runtime:1.0.0-alpha9-1'
+    compile 'android.arch.persistence.room:rxjava2:1.0.0-alpha9-1'
+    kapt 'android.arch.persistence.room:compiler:1.0.0-alpha9-1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}
+

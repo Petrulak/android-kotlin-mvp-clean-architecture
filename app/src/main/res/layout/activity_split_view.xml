@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@+id/switchBtn"
+    android:orientation="horizontal">
+
+    <FrameLayout
+      android:id="@+id/frame1"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1" />
+
+    <FrameLayout
+      android:id="@+id/frame2"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:background="@android:color/holo_blue_light" />
+  </LinearLayout>
+
+  <Switch
+    android:id="@+id/switchBtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:checked="true"
+    android:padding="20dp"
+    android:text="Sync Data between fragments" />
+</RelativeLayout>

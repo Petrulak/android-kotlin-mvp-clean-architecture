@@ -1,0 +1,13 @@
+ext {
+    config = [
+            package                  : "com.petrulak.cleankotlin",
+            buildToolsVersion        : "25.0.3",
+            compileSdkVersion        : 26,
+            minSdkVersion            : 24,
+            targetSdkVersion         : 25,
+            versionCode              : 1,
+            versionName              : "1.0",
+            testInstrumentationRunner: "android.support.test.runner.AndroidJUnitRunner"
+
+    ]
+}

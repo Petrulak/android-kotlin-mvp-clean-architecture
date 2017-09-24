@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "kotlin-android-extensions"
+
+def conf = rootProject.ext.config
+
+android {
+
+    compileSdkVersion conf.compileSdkVersion
+    buildToolsVersion conf.buildToolsVersion
+
+    defaultConfig {
+
+        applicationId conf.applicationId
+        versionCode conf.versionCode
+        versionName conf.versionName
+
+        minSdkVersion conf.minSdkVersion
+        targetSdkVersion conf.targetSdkVersion
+
+        testInstrumentationRunner conf.testInstrumentationRunner
+        vectorDrawables.useSupportLibrary true
+        multiDexEnabled true
+
+        def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+        buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
+
+        resValue "string", "mixpanel_key", "your_key_goes_here"
+
+        resValue "string", "base_url", "\"http://samples.openweathermap.org/\""
+        resValue "string", "weather_api_key", "your_key_goes_here"
+    }
+
+    buildTypes {
+
+        debug {
+            debuggable true
+            applicationIdSuffix ".debug"
+            buildConfigField "String", "GIT_SHA", "\"DUMMY_GIT_SHA\""
+        }
+
+        release {
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+}
+
+dependencies {
+
+    implementation project(':domain')
+    implementation project(':data')
+
+    /* View */
+    compile 'com.android.support:appcompat-v7:26.1.0'
+
+    /* Core */
+    compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+    kapt 'com.google.dagger:dagger-compiler:2.10'
+
+    /* Debug */
+    compile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    compile 'com.facebook.stetho:stetho:1.4.2'
+    compile 'com.facebook.stetho:stetho-okhttp3:1.4.2'
+
+    /* Analytics */
+    compile "com.mixpanel.android:mixpanel-android:5.1.4"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}

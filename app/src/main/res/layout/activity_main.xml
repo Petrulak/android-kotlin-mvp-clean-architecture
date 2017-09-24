@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@android:color/black"
+  android:orientation="vertical">
+
+  <Button
+    android:id="@+id/btn_one"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="API + Persistence" />
+
+  <Button
+    android:id="@+id/btn_two"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="API" />
+
+  <Button
+    android:id="@+id/btn_three"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="API + Data Bus" />
+
+</LinearLayout>
