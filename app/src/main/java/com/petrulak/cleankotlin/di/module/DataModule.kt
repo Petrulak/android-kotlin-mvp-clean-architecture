@@ -3,14 +3,14 @@ package com.petrulak.cleankotlin.di.module
 import android.arch.persistence.room.Room
 import android.content.Context
 import com.petrulak.cleankotlin.data.mapper.WeatherEntityMapper
-import com.petrulak.cleankotlin.data.repository.WeatherRepository
+import com.petrulak.cleankotlin.data.repository.WeatherRepositoryImpl
 import com.petrulak.cleankotlin.data.source.LocalSource
 import com.petrulak.cleankotlin.data.source.RemoteSource
 import com.petrulak.cleankotlin.data.source.local.WeatherDatabase
 import com.petrulak.cleankotlin.data.source.local.WeatherLocalSource
 import com.petrulak.cleankotlin.data.source.remote.WeatherRemoteSource
-import com.petrulak.cleankotlin.domain.executor.SchedulerProviderI
-import com.petrulak.cleankotlin.domain.repository.WeatherRepositoryI
+import com.petrulak.cleankotlin.domain.executor.SchedulerProvider
+import com.petrulak.cleankotlin.domain.repository.WeatherRepository
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -21,8 +21,8 @@ class DataModule {
 
     @Singleton
     @Provides
-    internal fun weatherRepository(repository: WeatherRepository): WeatherRepositoryI {
-        return repository
+    internal fun weatherRepository(repositoryImpl: WeatherRepositoryImpl): WeatherRepository {
+        return repositoryImpl
     }
 
     @Provides
@@ -33,7 +33,7 @@ class DataModule {
 
     @Provides
     @Singleton
-    internal fun provideLocalSource(db: WeatherDatabase, mapper: WeatherEntityMapper, schedulerProvider: SchedulerProviderI): LocalSource {
+    internal fun provideLocalSource(db: WeatherDatabase, mapper: WeatherEntityMapper, schedulerProvider: SchedulerProvider): LocalSource {
         return WeatherLocalSource(db, mapper, schedulerProvider)
     }
 

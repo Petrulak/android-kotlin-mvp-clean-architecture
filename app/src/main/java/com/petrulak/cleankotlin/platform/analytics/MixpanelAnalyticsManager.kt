@@ -3,7 +3,7 @@ package com.petrulak.cleankotlin.platform.analytics
 import com.mixpanel.android.mpmetrics.MixpanelAPI
 
 
-class MixpanelAnalyticsActions(val mixpanelAPI: MixpanelAPI) : AnalyticsActions {
+class MixpanelAnalyticsManager(val mixpanelAPI: MixpanelAPI) : AnalyticsManager {
 
     override fun trackEvent(event: String) {
         mixpanelAPI.track(event)

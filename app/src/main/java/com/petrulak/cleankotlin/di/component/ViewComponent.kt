@@ -15,10 +15,14 @@ import dagger.Component
     ApplicationComponent::class),
     modules = arrayOf(PresenterModule::class))
 interface ViewComponent {
+
     fun inject(item: MainActivity)
+
     fun inject(item: Example1Activity)
     fun inject(item: Example1Fragment)
+
     fun inject(item: Example2Activity)
+
     fun inject(item: Example3Fragment)
     fun inject(item: Example3Activity)
 }

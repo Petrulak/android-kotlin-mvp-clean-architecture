@@ -13,19 +13,19 @@ abstract class Mapper<To, From> {
 
     abstract fun reverse(to: To): From
 
-    fun map(froms: List<From>?): List<To> {
-        if (froms != null) {
-            val result = ArrayList<To>(froms.size)
-            froms.mapTo(result) { map(it) }
+    fun map(list: List<From>?): List<To> {
+        if (list != null) {
+            val result = ArrayList<To>(list.size)
+            list.mapTo(result) { map(it) }
             return result
         }
         return emptyList()
     }
 
-    fun reverse(tos: List<To>?): List<From> {
-        if (tos != null) {
-            val result = ArrayList<From>(tos.size)
-            tos.mapTo(result) { reverse(it) }
+    fun reverse(list: List<To>?): List<From> {
+        if (list != null) {
+            val result = ArrayList<From>(list.size)
+            list.mapTo(result) { reverse(it) }
             return result
         }
         return emptyList()

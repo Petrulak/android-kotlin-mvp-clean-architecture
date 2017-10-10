@@ -2,7 +2,7 @@ package com.petrulak.cleankotlin.ui.example3.fragment
 
 import android.util.Log
 import com.petrulak.cleankotlin.di.scope.ViewScope
-import com.petrulak.cleankotlin.domain.interactor.WeatherRemoteUseCase
+import com.petrulak.cleankotlin.domain.interactor.GetWeatherRemotelyUseCase
 import com.petrulak.cleankotlin.domain.model.Weather
 import com.petrulak.cleankotlin.platform.bus.data.DataBus
 import com.petrulak.cleankotlin.platform.bus.event.EventBus
@@ -17,7 +17,9 @@ import javax.inject.Inject
 @ViewScope
 class Example3Presenter
 @Inject
-constructor(private val weatherRemote: WeatherRemoteUseCase, private val dataBus: DataBus, private val eventBus: EventBus) : Example3Contract.Presenter {
+constructor(private val getWeatherRemotelyUseCase: GetWeatherRemotelyUseCase,
+            private val dataBus: DataBus,
+            private val eventBus: EventBus) : Example3Contract.Presenter {
 
     private var view: View? = null
 
@@ -29,7 +31,7 @@ constructor(private val weatherRemote: WeatherRemoteUseCase, private val dataBus
     }
 
     override fun start() {
-        weatherRemote.execute({ onSuccess(it) }, { onError(it) }, "London,uk")
+        getWeatherRemotelyUseCase.execute({ onSuccess(it) }, { onError(it) }, "London,uk")
         subscribeToData()
         subscribeToFragmentSyncEvents()
         //  subscribeToDummyEvents()
@@ -69,13 +71,13 @@ constructor(private val weatherRemote: WeatherRemoteUseCase, private val dataBus
     }
 
     override fun stop() {
-        weatherRemote.dispose()
+        getWeatherRemotelyUseCase.dispose()
         dataDisposable.clear()
         disposables.clear()
     }
 
     override fun refresh() {
-        weatherRemote.execute({ onSuccess(it) }, { onError(it) }, "London,uk")
+        getWeatherRemotelyUseCase.execute({ onSuccess(it) }, { onError(it) }, "London,uk")
     }
 
     private fun onSuccess(weather: Weather) {

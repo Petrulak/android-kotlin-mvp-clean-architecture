@@ -1,7 +1,7 @@
 package com.petrulak.cleankotlin.ui.example2
 
 import com.petrulak.cleankotlin.di.scope.ViewScope
-import com.petrulak.cleankotlin.domain.interactor.WeatherRemoteUseCase
+import com.petrulak.cleankotlin.domain.interactor.GetWeatherRemotelyUseCase
 import com.petrulak.cleankotlin.domain.model.Weather
 import com.petrulak.cleankotlin.ui.example2.Example2Contract.View
 import java.util.*
@@ -11,7 +11,7 @@ import javax.inject.Inject
 @ViewScope
 class Example2Presenter
 @Inject
-constructor(private val remoteUseCase: WeatherRemoteUseCase) : Example2Contract.Presenter {
+constructor(private val getWeatherRemotelyUseCase: GetWeatherRemotelyUseCase) : Example2Contract.Presenter {
 
     private var view: View? = null
 
@@ -24,15 +24,15 @@ constructor(private val remoteUseCase: WeatherRemoteUseCase) : Example2Contract.
     }
 
     override fun stop() {
-        remoteUseCase.dispose()
+        getWeatherRemotelyUseCase.dispose()
     }
 
     override fun refresh() {
-        remoteUseCase.execute({ onWeatherSuccess(it) }, { onWeatherError(it) }, "London,uk")
+        getWeatherRemotelyUseCase.execute({ onWeatherSuccess(it) }, { onWeatherError(it) }, "London,uk")
     }
 
     private fun onWeatherSuccess(item: Weather) {
-        val modified = Weather(item.id, item.name, Random().nextInt(80 - 65) + 65)
+        val modified = item.copy(visibility = Random().nextInt(80 - 65) + 65)
         view?.showWeather(modified)
     }
 
