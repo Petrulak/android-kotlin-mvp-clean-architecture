@@ -31,11 +31,10 @@ constructor(
     override fun refresh() {
         getWeather.dispose() //clear older disposables
         getWeather.execute({ onWeatherSuccess(it) }, { Timber.e(it) }, "London,uk")
-        /* In case you are not interested in errors, use: getWeather.execute({ view?.showWeather(it) }, params = "London,uk") */
+        /* In case you are not interested in errors, use: getWeather.execute({ view?.showWeather(it) }, params = "London,uk") instead */
     }
 
     private fun onWeatherSuccess(item: Weather) {
-        Timber.e("visibility ${item.visibility}")
         view?.showWeather(item)
     }
 }
