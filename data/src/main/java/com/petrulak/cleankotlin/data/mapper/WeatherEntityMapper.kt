@@ -9,9 +9,9 @@ import javax.inject.Singleton
 @Singleton
 class WeatherEntityMapper
 @Inject
-constructor() : Mapper<WeatherEntity, Weather>() {
+constructor() : Mapper<Weather, WeatherEntity>() {
 
-    override fun map(input: Weather): WeatherEntity {
+    override fun reverse(input: Weather): WeatherEntity {
 
         val id = input.id
         val name = input.name
@@ -20,7 +20,7 @@ constructor() : Mapper<WeatherEntity, Weather>() {
         return WeatherEntity(id, name, visibility)
     }
 
-    override fun reverse(input: WeatherEntity): Weather {
+    override fun map(input: WeatherEntity): Weather {
         return Weather(input.uid, input.name, input.visibility)
     }
 }

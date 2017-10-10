@@ -38,6 +38,10 @@ class MainActivity : BaseActivity() {
         navigator.navigate(this, Example3Activity::class.java)
     }
 
+    /**
+     * This in an example how to use [com.petrulak.cleankotlin.platform.analytics.AnalyticsManager] to
+     * track events.
+     */
     private fun logAnalytics() {
 
         analyticsManager.setUser("john@doe.com")

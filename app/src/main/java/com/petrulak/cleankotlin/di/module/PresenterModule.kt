@@ -1,8 +1,8 @@
 package com.petrulak.cleankotlin.di.module
 
 import com.petrulak.cleankotlin.di.scope.ViewScope
-import com.petrulak.cleankotlin.domain.interactor.WeatherLocalUseCase
-import com.petrulak.cleankotlin.domain.interactor.WeatherRemoteUseCase
+import com.petrulak.cleankotlin.domain.interactor.GetWeatherRemotelyUseCase
+import com.petrulak.cleankotlin.domain.interactor.GetWeatherUseCase
 import com.petrulak.cleankotlin.platform.bus.data.DataBus
 import com.petrulak.cleankotlin.platform.bus.event.EventBus
 import com.petrulak.cleankotlin.ui.example1.fragment.Example1Contract
@@ -19,20 +19,20 @@ class PresenterModule {
 
     @ViewScope
     @Provides
-    internal fun example1Presenter(localUseCase: WeatherLocalUseCase, remoteUseCase: WeatherRemoteUseCase): Example1Contract.Presenter {
-        return Example1Presenter(localUseCase, remoteUseCase)
+    internal fun example1Presenter(getWeatherUseCase: GetWeatherUseCase): Example1Contract.Presenter {
+        return Example1Presenter(getWeatherUseCase)
     }
 
     @ViewScope
     @Provides
-    internal fun example2Presenter(remoteUseCase: WeatherRemoteUseCase): Example2Contract.Presenter {
-        return Example2Presenter(remoteUseCase)
+    internal fun example2Presenter(remotelyUseCaseGet: GetWeatherRemotelyUseCase): Example2Contract.Presenter {
+        return Example2Presenter(remotelyUseCaseGet)
     }
 
     @ViewScope
     @Provides
-    internal fun example3Presenter(remoteUseCase: WeatherRemoteUseCase, dataBus: DataBus, eventBus: EventBus): Example3Contract.Presenter {
-        return Example3Presenter(remoteUseCase, dataBus, eventBus)
+    internal fun example3Presenter(remotelyUseCaseGet: GetWeatherRemotelyUseCase, dataBus: DataBus, eventBus: EventBus): Example3Contract.Presenter {
+        return Example3Presenter(remotelyUseCaseGet, dataBus, eventBus)
     }
 
 }

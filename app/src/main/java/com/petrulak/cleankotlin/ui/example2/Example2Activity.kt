@@ -9,7 +9,10 @@ import com.petrulak.cleankotlin.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.fragment_weather.*
 import javax.inject.Inject
 
-
+/**
+ * Example 2 shows how to inject your presenters within Activity level and how to
+ * get weather data from remote source (REST API).
+ */
 class Example2Activity : BaseActivity(), Example2Contract.View {
 
     private var presenter: Example2Contract.Presenter? = null

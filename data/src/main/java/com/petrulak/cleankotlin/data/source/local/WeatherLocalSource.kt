@@ -3,7 +3,8 @@ package com.petrulak.cleankotlin.data.source.local
 
 import com.petrulak.cleankotlin.data.mapper.WeatherEntityMapper
 import com.petrulak.cleankotlin.data.source.LocalSource
-import com.petrulak.cleankotlin.domain.executor.SchedulerProviderI
+import com.petrulak.cleankotlin.data.source.local.model.WeatherEntity
+import com.petrulak.cleankotlin.domain.executor.SchedulerProvider
 import com.petrulak.cleankotlin.domain.model.Weather
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -15,10 +16,10 @@ class WeatherLocalSource
 @Inject
 constructor(private val db: WeatherDatabase,
             private val mapper: WeatherEntityMapper,
-            private val schedulers: SchedulerProviderI) : LocalSource {
+            private val schedulers: SchedulerProvider) : LocalSource {
 
     override fun save(weather: Weather) {
-        val item = mapper.map(weather)
+        val item = mapper.reverse(weather)
 
         Single.fromCallable {
             db.weatherDao().deleteWeatherById(item.uid)
@@ -26,9 +27,7 @@ constructor(private val db: WeatherDatabase,
         }.subscribeOn(schedulers.io()).subscribe()
     }
 
-    override fun getWeatherForCity(name: String): Flowable<Weather> {
-        return db.weatherDao()
-            .getByName(name)
-            .map { mapper.reverse(it) }
+    override fun getWeatherForCity(name: String): Flowable<WeatherEntity> {
+        return db.weatherDao().getByName(name)
     }
 }

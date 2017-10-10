@@ -21,7 +21,7 @@ class MapperModule {
 
     @Singleton
     @Provides
-    internal fun weatherEntityMapper(mapper: WeatherEntityMapper): Mapper<WeatherEntity, Weather> {
+    internal fun weatherEntityMapper(mapper: WeatherEntityMapper): Mapper<Weather, WeatherEntity> {
         return mapper
     }
 

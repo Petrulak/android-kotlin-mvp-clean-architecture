@@ -10,6 +10,10 @@ import com.petrulak.cleankotlin.ui.base.BaseActivity
 import com.petrulak.cleankotlin.ui.example3.fragment.Example3Fragment
 import kotlinx.android.synthetic.main.activity_split_view.*
 
+/**
+ * Example 3 shows how to inject your presenters within Fragment level and how to
+ * synchronize data between 2 fragments.
+ */
 class Example3Activity : BaseActivity() {
 
     override fun layoutId() = R.layout.activity_split_view

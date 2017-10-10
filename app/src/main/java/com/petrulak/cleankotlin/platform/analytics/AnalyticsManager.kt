@@ -1,32 +1,14 @@
 package com.petrulak.cleankotlin.platform.analytics
 
-import com.petrulak.cleankotlin.BuildConfig
+interface AnalyticsManager {
 
-class AnalyticsManager(private val trackers: List<AnalyticsActions>) : AnalyticsActions {
+    fun setUser(email: String)
 
-    override fun trackEvent(event: String) {
-        execute { trackers.forEach { it.trackEvent(event) } }
-    }
+    fun setCustomAttributes(attributes: HashMap<String, Any>)
 
-    override fun trackEvent(event: String, map: HashMap<String, Any>) {
-        execute { trackers.forEach { it.trackEvent(event, map) } }
-    }
+    fun trackEvent(event: String)
 
-    override fun setUser(email: String) {
-        execute { trackers.forEach { it.setUser(email) } }
-    }
+    fun trackEvent(event: String, map: HashMap<String, Any>)
 
-    override fun setCustomAttributes(attributes: HashMap<String, Any>) {
-        execute { trackers.forEach { it.setCustomAttributes(attributes) } }
-    }
-
-    override fun clear() {
-        execute { trackers.forEach { it.clear() } }
-    }
-
-    private fun execute(action: () -> Unit) {
-        if (!BuildConfig.DEBUG) {
-            action.invoke()
-        }
-    }
+    fun clear()
 }

@@ -9,13 +9,13 @@ import timber.log.Timber
 
 /**
  * If you have set up Crashlytics and/or Instabug in [com.petrulak.cleankotlin.platform.logging.ErrorReportingTree]
- * all the errors will be pushed to that platform
+ * all the errors will be pushed to that platform.
  */
 abstract class BaseInteractor<T> {
 
     protected var disposables: CompositeDisposable = CompositeDisposable()
 
-    protected fun getDisposableSingleObserver(onNext: (T) -> Unit, onError: (Throwable) -> Unit): DisposableSingleObserver<T> {
+    protected fun getDisposableSingleObserver(onNext: (T) -> Unit, onError: (Throwable) -> Unit = {}): DisposableSingleObserver<T> {
 
         return object : DisposableSingleObserver<T>() {
             override fun onSuccess(value: T) {
@@ -29,7 +29,7 @@ abstract class BaseInteractor<T> {
         }
     }
 
-    protected fun getDisposableCompletableObserver(onComplete: () -> Unit, onError: (Throwable) -> Unit): DisposableCompletableObserver {
+    protected fun getDisposableCompletableObserver(onComplete: () -> Unit, onError: (Throwable) -> Unit = {}): DisposableCompletableObserver {
 
         return object : DisposableCompletableObserver() {
 
@@ -44,7 +44,7 @@ abstract class BaseInteractor<T> {
         }
     }
 
-    protected fun getDisposableSubscriber(onNext: (T) -> Unit, onError: (Throwable) -> Unit): DisposableSubscriber<T> {
+    protected fun getDisposableSubscriber(onNext: (T) -> Unit, onError: (Throwable) -> Unit = {}): DisposableSubscriber<T> {
 
         return object : DisposableSubscriber<T>() {
 
