@@ -4,10 +4,10 @@ import java.util.*
 
 abstract class Mapper<To, From> {
 
-    protected val invalidInt = -1
-    protected val invalidLong = (-1).toLong()
-    protected val invalidDouble = -1.0
-    protected val emptyString = ""
+    val invalidInt = -1
+    val invalidLong = (-1).toLong()
+    val invalidDouble = -1.0
+    val emptyString = ""
 
     abstract fun map(from: From): To
 
