@@ -7,6 +7,7 @@ import com.petrulak.cleankotlin.data.source.local.model.WeatherEntity
 import com.petrulak.cleankotlin.data.source.remote.model.WeatherDto
 import com.petrulak.cleankotlin.domain.model.Weather
 import com.petrulak.cleankotlin.domain.repository.WeatherRepository
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import java.util.*
@@ -34,8 +35,8 @@ constructor(private val remoteSource: RemoteSource,
             .map { weatherEntityMapper.map(it) }
     }
 
-    override fun save(weather: Weather) {
-        localSource.save(weather)
+    override fun save(weather: Weather): Completable {
+        return localSource.save(weather)
     }
 
     override fun getWeatherForCity(city: String): Flowable<Weather> {
