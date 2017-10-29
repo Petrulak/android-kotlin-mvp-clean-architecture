@@ -9,7 +9,6 @@ import com.petrulak.cleankotlin.data.source.RemoteSource
 import com.petrulak.cleankotlin.data.source.local.WeatherDatabase
 import com.petrulak.cleankotlin.data.source.local.WeatherLocalSource
 import com.petrulak.cleankotlin.data.source.remote.WeatherRemoteSource
-import com.petrulak.cleankotlin.domain.executor.SchedulerProvider
 import com.petrulak.cleankotlin.domain.repository.WeatherRepository
 import dagger.Module
 import dagger.Provides
@@ -33,8 +32,8 @@ class DataModule {
 
     @Provides
     @Singleton
-    internal fun provideLocalSource(db: WeatherDatabase, mapper: WeatherEntityMapper, schedulerProvider: SchedulerProvider): LocalSource {
-        return WeatherLocalSource(db, mapper, schedulerProvider)
+    internal fun provideLocalSource(db: WeatherDatabase, mapper: WeatherEntityMapper): LocalSource {
+        return WeatherLocalSource(db, mapper)
     }
 
     @Provides
