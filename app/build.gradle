@@ -69,6 +69,9 @@ dependencies {
     /* Analytics */
     compile "com.mixpanel.android:mixpanel-android:5.1.4"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    /* Various */
+    compile 'com.github.pwittchen:reactivenetwork-rx2:0.12.1'
 }
 repositories {
     mavenCentral()
