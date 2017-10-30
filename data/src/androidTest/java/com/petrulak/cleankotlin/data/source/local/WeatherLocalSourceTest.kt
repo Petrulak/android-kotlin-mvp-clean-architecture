@@ -3,8 +3,6 @@ package com.petrulak.cleankotlin.data.source.local
 import android.arch.persistence.room.Room
 import android.support.test.InstrumentationRegistry
 import com.petrulak.cleankotlin.data.mapper.WeatherEntityMapper
-import com.petrulak.cleankotlin.domain.executor.SchedulerProvider
-import com.petrulak.cleankotlin.domain.executor.SchedulerProviderImpl
 import com.petrulak.cleankotlin.domain.model.Weather
 import org.junit.After
 import org.junit.Assert
@@ -17,14 +15,12 @@ class WeatherLocalSourceTest {
     lateinit var dataSource: WeatherLocalSource
     lateinit var database: WeatherDatabase
     lateinit var mapper: WeatherEntityMapper
-    lateinit var schedulerProvider: SchedulerProvider
 
     @Before
     fun setup() {
         database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), WeatherDatabase::class.java).build()
         mapper = WeatherEntityMapper()
-        schedulerProvider = SchedulerProviderImpl()
-        dataSource = WeatherLocalSource(database, mapper, schedulerProvider)
+        dataSource = WeatherLocalSource(database, mapper)
     }
 
     @After
