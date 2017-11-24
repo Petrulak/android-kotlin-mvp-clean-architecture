@@ -10,19 +10,19 @@ import com.petrulak.cleankotlin.platform.logging.ErrorReportingTree
 import com.squareup.leakcanary.LeakCanary
 import timber.log.Timber
 
-class App : Application() {
+open class App : Application() {
 
     lateinit var applicationComponent: ApplicationComponent
 
     override fun onCreate() {
         super.onCreate()
         instance = this
-        initializeAppComponent()
+        applicationComponent = initializeAppComponent()
         initialize()
     }
 
-    private fun initializeAppComponent() {
-        applicationComponent = DaggerApplicationComponent.builder()
+    open fun initializeAppComponent(): ApplicationComponent {
+        return DaggerApplicationComponent.builder()
             .applicationModule(ApplicationModule(this))
             .dataModule(DataModule())
             .networkModule(NetworkModule())
@@ -60,6 +60,6 @@ class App : Application() {
     }
 
     companion object {
-         lateinit var instance: App
+        lateinit var instance: App
     }
 }

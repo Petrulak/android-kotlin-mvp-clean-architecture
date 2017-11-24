@@ -21,7 +21,7 @@ class Example2Activity : BaseActivity(), Example2Contract.View {
 
     override fun onViewsBound() {
         presenter?.start()
-        btn_refresh.setOnClickListener { presenter?.refresh() }
+        btn_refresh.setOnClickListener { presenter?.refresh(Example2Presenter.CITY) }
     }
 
     override fun inject() {

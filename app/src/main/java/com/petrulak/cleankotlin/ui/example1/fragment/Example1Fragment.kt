@@ -32,9 +32,9 @@ class Example1Fragment : BaseFragment(), Example1Contract.View {
         this.presenter?.attachView(this)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view?.let { presenter?.start() }
+        presenter?.start()
         btn_refresh.setOnClickListener { presenter?.refresh() }
     }
 

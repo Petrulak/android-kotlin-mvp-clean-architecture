@@ -3,9 +3,9 @@ package com.petrulak.cleankotlin.di.component
 import android.content.Context
 import com.petrulak.cleankotlin.di.module.*
 import com.petrulak.cleankotlin.domain.executor.SchedulerProvider
-import com.petrulak.cleankotlin.domain.interactor.GetWeatherLocallyUseCase
-import com.petrulak.cleankotlin.domain.interactor.GetWeatherRemotelyUseCase
-import com.petrulak.cleankotlin.domain.interactor.GetWeatherUseCase
+import com.petrulak.cleankotlin.domain.interactor.definition.GetWeatherLocallyUseCase
+import com.petrulak.cleankotlin.domain.interactor.definition.GetWeatherRemotelyUseCase
+import com.petrulak.cleankotlin.domain.interactor.definition.GetWeatherUseCase
 import com.petrulak.cleankotlin.platform.analytics.AnalyticsManager
 import com.petrulak.cleankotlin.platform.bus.data.DataBus
 import com.petrulak.cleankotlin.platform.bus.event.EventBus
@@ -29,6 +29,7 @@ interface ApplicationComponent {
 
     /* exposing to other components [com.petrulak.cleankotlin.di.component.ViewComponent] */
     fun context(): Context
+
     fun scheduler(): SchedulerProvider
     fun navigator(): Navigator
     fun eventBus(): EventBus

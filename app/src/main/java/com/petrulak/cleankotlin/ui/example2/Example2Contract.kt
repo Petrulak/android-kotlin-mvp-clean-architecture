@@ -13,6 +13,6 @@ interface Example2Contract {
 
     interface Presenter : BasePresenter<View> {
         override fun attachView(view: View)
-        fun refresh()
+        fun refresh(city: String)
     }
 }
