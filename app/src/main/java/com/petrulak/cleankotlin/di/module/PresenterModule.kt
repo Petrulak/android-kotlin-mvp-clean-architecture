@@ -1,8 +1,8 @@
 package com.petrulak.cleankotlin.di.module
 
 import com.petrulak.cleankotlin.di.scope.ViewScope
-import com.petrulak.cleankotlin.domain.interactor.GetWeatherRemotelyUseCase
-import com.petrulak.cleankotlin.domain.interactor.GetWeatherUseCase
+import com.petrulak.cleankotlin.domain.interactor.definition.GetWeatherRemotelyUseCase
+import com.petrulak.cleankotlin.domain.interactor.definition.GetWeatherUseCase
 import com.petrulak.cleankotlin.platform.bus.data.DataBus
 import com.petrulak.cleankotlin.platform.bus.event.EventBus
 import com.petrulak.cleankotlin.ui.example1.fragment.Example1Contract

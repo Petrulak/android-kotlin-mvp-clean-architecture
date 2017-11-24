@@ -2,12 +2,14 @@ package com.petrulak.cleankotlin.ui.example3.fragment
 
 import android.util.Log
 import com.petrulak.cleankotlin.di.scope.ViewScope
-import com.petrulak.cleankotlin.domain.interactor.GetWeatherRemotelyUseCase
+import com.petrulak.cleankotlin.domain.interactor.definition.GetWeatherRemotelyUseCase
 import com.petrulak.cleankotlin.domain.model.Weather
 import com.petrulak.cleankotlin.platform.bus.data.DataBus
 import com.petrulak.cleankotlin.platform.bus.event.EventBus
 import com.petrulak.cleankotlin.platform.bus.event.events.BaseEvent
 import com.petrulak.cleankotlin.platform.bus.event.events.FragmentSyncEvent
+import com.petrulak.cleankotlin.platform.extensions.getDisposableSingleObserver
+import com.petrulak.cleankotlin.ui.base.BasePresenterImpl
 import com.petrulak.cleankotlin.ui.example3.fragment.Example3Contract.View
 import dagger.internal.Preconditions.checkNotNull
 import io.reactivex.disposables.CompositeDisposable
@@ -19,11 +21,10 @@ class Example3Presenter
 @Inject
 constructor(private val getWeatherRemotelyUseCase: GetWeatherRemotelyUseCase,
             private val dataBus: DataBus,
-            private val eventBus: EventBus) : Example3Contract.Presenter {
+            private val eventBus: EventBus) : BasePresenterImpl(), Example3Contract.Presenter {
 
     private var view: View? = null
 
-    private val disposables = CompositeDisposable()
     private val dataDisposable = CompositeDisposable()
 
     override fun attachView(view: View) {
@@ -31,7 +32,8 @@ constructor(private val getWeatherRemotelyUseCase: GetWeatherRemotelyUseCase,
     }
 
     override fun start() {
-        getWeatherRemotelyUseCase.execute({ onSuccess(it) }, { onError(it) }, "London,uk")
+        super.start()
+        refresh()
         subscribeToData()
         subscribeToFragmentSyncEvents()
         //  subscribeToDummyEvents()
@@ -71,13 +73,15 @@ constructor(private val getWeatherRemotelyUseCase: GetWeatherRemotelyUseCase,
     }
 
     override fun stop() {
-        getWeatherRemotelyUseCase.dispose()
+        super.stop()
         dataDisposable.clear()
-        disposables.clear()
     }
 
     override fun refresh() {
-        getWeatherRemotelyUseCase.execute({ onSuccess(it) }, { onError(it) }, "London,uk")
+        val disposable = getWeatherRemotelyUseCase
+            .execute("London,uk")
+            .subscribeWith(getDisposableSingleObserver({ onSuccess(it) }, { onError(it) }))
+        disposables.add(disposable)
     }
 
     private fun onSuccess(weather: Weather) {
