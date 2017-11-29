@@ -28,3 +28,6 @@
 * [Kotlin - Weekly newsletter](http://www.kotlinweekly.net/)
 * [Kotlin - Slack channel](http://kotlinslackin.herokuapp.com/)
 * [Kotlin - Talking Kotlin podcast](http://talkingkotlin.com/)
+# General
+## Security
+* [A follow-up on how to store tokens securely in Android](https://medium.com/google-developer-experts/a-follow-up-on-how-to-store-tokens-securely-in-android-e84ac5f15f17)
