@@ -6,6 +6,5 @@ build/
 art/
 gradlew.*
 .idea/
-gradle/
 captures/
 .externalNativeBuild
