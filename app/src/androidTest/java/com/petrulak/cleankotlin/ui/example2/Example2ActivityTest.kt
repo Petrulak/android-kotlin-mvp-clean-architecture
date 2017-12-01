@@ -48,7 +48,7 @@ class Example2ActivityTest {
     fun shouldUpdateUIAfterObtainingWeatherData() {
         val mockedWeather = Weather(1L, "Bratislava", 456)
         val mockedSingle = Single.just(mockedWeather)
-        Mockito.`when`(useCase.execute("London,uk")).thenReturn(mockedSingle)
+        Mockito.`when`(useCase.execute(mockedWeather.name)).thenReturn(mockedSingle)
 
         activity.launchActivity(Intent())
         onView(withId(R.id.tv_city)).check(matches(withText(mockedWeather.name)))

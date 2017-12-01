@@ -1,39 +1,42 @@
 package com.petrulak.cleankotlin.ui.example2
 
-import android.support.test.runner.AndroidJUnit4
 import com.petrulak.cleankotlin.domain.interactor.definition.GetWeatherRemotelyUseCase
-import com.petrulak.cleankotlin.domain.model.Weather
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
 
-@RunWith(AndroidJUnit4::class)
 class Example2PresenterTest {
 
-    lateinit var presenter: Example2Presenter
+    val TAG = "Example2PresenterTest"
+    val mockUseCase = mock(GetWeatherRemotelyUseCase::class.java)
+    val mockView = mock(Example2Contract.View::class.java)
+    val presenter = Example2Presenter(mockUseCase)
 
     val CITY = "Bratislava"
 
     @Before
     fun setUp() {
-
-        val mockUseCase = mock(GetWeatherRemotelyUseCase::class.java)
-        val mockView = mock(Example2Contract.View::class.java)
-
-        val mockedWeather = Weather(1L, CITY, 456)
-        val mockedSingle = Single.just(mockedWeather)
-        Mockito.`when`(mockUseCase.execute(CITY)).thenReturn(mockedSingle)
-
-        presenter = Example2Presenter(mockUseCase)
         presenter.attachView(mockView)
     }
 
     @Test
-    fun refresh() {
-        //TODO RXJava test
+    fun shouldDisplayError() {
+        val errorMsg = "Errorrrr"
+        val error = IllegalArgumentException(errorMsg)
+        Mockito.`when`(mockUseCase.execute(CITY)).thenReturn(Single.error(error))
+        presenter.refresh(CITY)
+
+/*  TODO make this happen
+        Log.e(TAG, "viewState = " + presenter.view?.viewState.toString());
+        Log.e(TAG, "mockvie = " + mockView.viewState.toString());
+
+        verify(mockView).viewState = Matchers.isA(ViewState.Loading::class.java)
+        verify(mockView).viewState = isA<ViewState.Error>()
+        verifyNoMoreInteractions(mockView)
+        */
+
     }
 
 }
