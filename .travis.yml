@@ -10,3 +10,8 @@ android:
 
     # The BuildTools version used by your project
     - build-tools-26.0.2
+    
+    # Support library
+    - extra-android-support
+    - extra-android-m2repository
+    - extra-google-m2repository
