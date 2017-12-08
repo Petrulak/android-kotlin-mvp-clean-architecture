@@ -49,6 +49,10 @@ android {
     }
 }
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
 
     implementation project(':domain')
