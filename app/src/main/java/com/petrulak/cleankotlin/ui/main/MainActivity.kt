@@ -1,10 +1,12 @@
 package com.petrulak.cleankotlin.ui.main
 
+import android.os.Bundle
 import com.petrulak.cleankotlin.App
 import com.petrulak.cleankotlin.R
 import com.petrulak.cleankotlin.di.component.DaggerViewComponent
 import com.petrulak.cleankotlin.ui.base.BaseActivity
 import com.petrulak.cleankotlin.ui.example1.Example1Activity
+import com.petrulak.cleankotlin.ui.example1.ExampleParcelable
 import com.petrulak.cleankotlin.ui.example2.Example2Activity
 import com.petrulak.cleankotlin.ui.example3.Example3Activity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,7 +29,10 @@ class MainActivity : BaseActivity() {
     }
 
     private fun button1Clicked() {
-        navigator.navigate(this, Example1Activity::class.java)
+        val dummy = ExampleParcelable("Hello from here")
+        val bundle = Bundle()
+        bundle.putParcelable("parcelable", dummy)
+        navigator.navigate(this, Example1Activity::class.java, bundle)
     }
 
     private fun button2Clicked() {
