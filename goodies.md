@@ -11,6 +11,7 @@
 # Tooling
 ## AndroidStudio
 * [Room SQL higlighting](https://www.reddit.com/r/androiddev/comments/7g9246/dont_forget_to_inject_android_room_sql_language/)
+* [DagGraph - Dagger dependency graph generator for Android Developers](https://github.com/dvdciri/daggraph)
 ## Gradle
 * [Gradle tips and recipes](https://developer.android.com/studio/build/gradle-tips.html)
 # Tutorials
