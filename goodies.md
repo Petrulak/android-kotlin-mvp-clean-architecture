@@ -8,6 +8,7 @@
 * [Activity/Fragment transitions](https://github.com/lgvalle/Material-Animations)
 * [Animation library - ExpectAnim](https://github.com/florent37/ExpectAnim)
 * [Material Doc](https://materialdoc.com/)
+* [Keyframe Animations with ConstraintLayout and ConstraintSet](https://www.youtube.com/watch?v=OHcfs6rStRo)
 # Tooling
 ## AndroidStudio
 * [Room SQL higlighting](https://www.reddit.com/r/androiddev/comments/7g9246/dont_forget_to_inject_android_room_sql_language/)
