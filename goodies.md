@@ -33,3 +33,5 @@
 # General
 ## Security
 * [A follow-up on how to store tokens securely in Android](https://medium.com/google-developer-experts/a-follow-up-on-how-to-store-tokens-securely-in-android-e84ac5f15f17)
+## Style
+* [Kotlin Coding Conventions](http://kotlinlang.org/docs/reference/coding-conventions.html) 
