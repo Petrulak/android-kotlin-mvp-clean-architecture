@@ -11,8 +11,10 @@ import javax.inject.Singleton
 @Singleton
 class GetWeatherLocallyUseCaseImpl
 @Inject
-constructor(private val schedulerProvider: SchedulerProvider,
-            private val repository: WeatherRepository) : GetWeatherLocallyUseCase {
+constructor(
+    private val schedulerProvider: SchedulerProvider,
+    private val repository: WeatherRepository
+) : GetWeatherLocallyUseCase {
 
     private fun buildUseCase(city: String): Flowable<Weather> {
         return when (city.isEmpty()) {

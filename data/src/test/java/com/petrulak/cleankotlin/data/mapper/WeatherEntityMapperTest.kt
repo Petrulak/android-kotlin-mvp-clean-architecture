@@ -6,7 +6,7 @@ import org.junit.Assert
 import org.junit.Test
 
 
-class WeatherEntityMapperTest{
+class WeatherEntityMapperTest {
 
     val mapper = WeatherEntityMapper()
 

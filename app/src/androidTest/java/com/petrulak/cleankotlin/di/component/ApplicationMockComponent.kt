@@ -6,9 +6,12 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(
-    ApplicationMockModule::class,
-    InteractorMockModule::class))
+@Component(
+    modules = arrayOf(
+        ApplicationMockModule::class,
+        InteractorMockModule::class
+    )
+)
 interface ApplicationMockComponent : ApplicationComponent {
 
 }

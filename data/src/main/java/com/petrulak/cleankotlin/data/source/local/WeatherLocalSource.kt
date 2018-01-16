@@ -13,8 +13,10 @@ import javax.inject.Singleton
 @Singleton
 class WeatherLocalSource
 @Inject
-constructor(private val db: WeatherDatabase,
-            private val mapper: WeatherEntityMapper) : LocalSource {
+constructor(
+    private val db: WeatherDatabase,
+    private val mapper: WeatherEntityMapper
+) : LocalSource {
 
     override fun save(weather: Weather): Completable {
         val item = mapper.reverse(weather)

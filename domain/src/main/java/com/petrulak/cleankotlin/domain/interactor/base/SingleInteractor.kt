@@ -4,7 +4,8 @@ import com.petrulak.cleankotlin.domain.executor.SchedulerProvider
 import io.reactivex.Single
 
 abstract class SingleInteractor<T, Parameters>(
-    private val schedulerProvider: SchedulerProvider) : BaseInteractor<T>() {
+    private val schedulerProvider: SchedulerProvider
+) : BaseInteractor<T>() {
 
     abstract fun buildUseCase(parameters: Parameters): Single<T>
 

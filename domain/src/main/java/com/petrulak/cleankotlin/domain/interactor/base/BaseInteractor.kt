@@ -15,7 +15,10 @@ abstract class BaseInteractor<T> {
 
     protected var disposables: CompositeDisposable = CompositeDisposable()
 
-    protected fun getDisposableSingleObserver(onNext: (T) -> Unit, onError: (Throwable) -> Unit = {}): DisposableSingleObserver<T> {
+    protected fun getDisposableSingleObserver(
+        onNext: (T) -> Unit,
+        onError: (Throwable) -> Unit = {}
+    ): DisposableSingleObserver<T> {
 
         return object : DisposableSingleObserver<T>() {
             override fun onSuccess(value: T) {
@@ -29,7 +32,10 @@ abstract class BaseInteractor<T> {
         }
     }
 
-    protected fun getDisposableCompletableObserver(onComplete: () -> Unit, onError: (Throwable) -> Unit = {}): DisposableCompletableObserver {
+    protected fun getDisposableCompletableObserver(
+        onComplete: () -> Unit,
+        onError: (Throwable) -> Unit = {}
+    ): DisposableCompletableObserver {
 
         return object : DisposableCompletableObserver() {
 

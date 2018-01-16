@@ -11,8 +11,10 @@ import javax.inject.Singleton
 @Singleton
 class GetWeatherRemotelyUseCaseImpl
 @Inject
-constructor(private val schedulerProvider: SchedulerProvider,
-            private val repository: WeatherRepository) : GetWeatherRemotelyUseCase {
+constructor(
+    private val schedulerProvider: SchedulerProvider,
+    private val repository: WeatherRepository
+) : GetWeatherRemotelyUseCase {
 
     private fun buildUseCase(city: String): Single<Weather> {
         return when (city.isEmpty()) {

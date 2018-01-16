@@ -7,9 +7,12 @@ import com.petrulak.cleankotlin.ui.example2.Example2PresenterTest
 import dagger.Component
 
 @ViewScope
-@Component(dependencies = arrayOf(
-    ApplicationMockComponent::class),
-    modules = arrayOf(PresenterMockModule::class))
+@Component(
+    dependencies = arrayOf(
+        ApplicationMockComponent::class
+    ),
+    modules = arrayOf(PresenterMockModule::class)
+)
 interface ViewMockComponent {
 
     fun inject(item: Example2ActivityTest)

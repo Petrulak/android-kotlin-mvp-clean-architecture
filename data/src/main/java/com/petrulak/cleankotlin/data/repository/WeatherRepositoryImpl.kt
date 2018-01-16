@@ -17,10 +17,12 @@ import javax.inject.Singleton
 @Singleton
 class WeatherRepositoryImpl
 @Inject
-constructor(private val remoteSource: RemoteSource,
-            private val localSource: LocalSource,
-            private val weatherDtoMapper: Mapper<Weather, WeatherDto>,
-            private val weatherEntityMapper: Mapper<Weather, WeatherEntity>) : WeatherRepository {
+constructor(
+    private val remoteSource: RemoteSource,
+    private val localSource: LocalSource,
+    private val weatherDtoMapper: Mapper<Weather, WeatherDto>,
+    private val weatherEntityMapper: Mapper<Weather, WeatherEntity>
+) : WeatherRepository {
 
     override fun getWeatherForCityRemotely(city: String): Single<Weather> {
         return remoteSource

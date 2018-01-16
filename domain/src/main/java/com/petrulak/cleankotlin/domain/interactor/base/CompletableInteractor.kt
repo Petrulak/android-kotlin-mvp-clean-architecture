@@ -4,7 +4,8 @@ import com.petrulak.cleankotlin.domain.executor.SchedulerProvider
 import io.reactivex.Completable
 
 abstract class CompletableInteractor<Parameters>(
-    private val schedulerProvider: SchedulerProvider) : BaseInteractor<Void>() {
+    private val schedulerProvider: SchedulerProvider
+) : BaseInteractor<Void>() {
 
     abstract fun buildUseCase(parameters: Parameters): Completable
 
