@@ -59,7 +59,7 @@ dependencies {
     implementation project(':data')
 
     /* View */
-    compile 'com.android.support:appcompat-v7:27.0.1'
+    compile 'com.android.support:appcompat-v7:27.0.2'
 
     /* Core */
     compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
@@ -73,10 +73,10 @@ dependencies {
 
     /* Analytics */
     compile "com.mixpanel.android:mixpanel-android:5.1.4"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     /* Various */
     compile 'com.github.pwittchen:reactivenetwork-rx2:0.12.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     /* Testing */
     androidTestCompile 'junit:junit:4.12'
