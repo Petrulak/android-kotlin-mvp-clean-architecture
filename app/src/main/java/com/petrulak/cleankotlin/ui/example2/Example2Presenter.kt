@@ -13,7 +13,7 @@ class Example2Presenter
 @Inject
 constructor(private val getWeatherRemotelyUseCase: GetWeatherRemotelyUseCase) : BasePresenterImpl(), Example2Contract.Presenter {
 
-     var view: View? = null
+    var view: View? = null
 
     override fun attachView(view: View) {
         this.view = checkNotNull(view)
@@ -29,7 +29,11 @@ constructor(private val getWeatherRemotelyUseCase: GetWeatherRemotelyUseCase) : 
             .execute(city)
             .doOnSubscribe { setViewState(ViewState.Loading()) }
             .doFinally { setViewState(ViewState.LoadingFinished()) }
-            .subscribeWith(getDisposableSingleObserver({ setViewState(ViewState.Success(it)) }, { setViewState(ViewState.Error(it)) }))
+            .subscribeWith(
+                getDisposableSingleObserver(
+                    { setViewState(ViewState.Success(it)) },
+                    { setViewState(ViewState.Error(it)) })
+            )
         disposables.add(disposable)
     }
 

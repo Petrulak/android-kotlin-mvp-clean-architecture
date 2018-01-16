@@ -4,7 +4,8 @@ import com.petrulak.cleankotlin.domain.executor.SchedulerProvider
 import io.reactivex.Flowable
 
 abstract class FlowableInteractor<T, Parameters>(
-    private val schedulerProvider: SchedulerProvider) : BaseInteractor<T>() {
+    private val schedulerProvider: SchedulerProvider
+) : BaseInteractor<T>() {
 
     abstract fun buildUseCase(parameters: Parameters): Flowable<T>
 
