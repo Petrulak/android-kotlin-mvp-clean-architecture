@@ -34,7 +34,7 @@ dependencies {
     compile 'android.arch.persistence.room:runtime:1.0.0'
     compile 'android.arch.persistence.room:rxjava2:1.0.0'
     kapt 'android.arch.persistence.room:compiler:1.0.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     /* Testing */
     testCompile 'junit:junit:4.12'
