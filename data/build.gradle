@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: "kotlin-android"
-apply plugin: "kotlin-kapt"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 def conf = rootProject.ext.config
 
@@ -23,24 +23,24 @@ dependencies {
     implementation project(":domain")
 
     /* Networking */
-    compile 'com.google.code.gson:gson:2.8.2'
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    compile Deps.gson
+    compile Deps.okhttp
+    compile Deps.retrofit
+    compile Deps.converter_gson
+    compile Deps.adapter_rxjava2
+    compile Deps.logging_interceptor
 
     /* Storage */
-    compile 'android.arch.persistence.room:runtime:1.0.0'
-    compile 'android.arch.persistence.room:rxjava2:1.0.0'
-    kapt 'android.arch.persistence.room:compiler:1.0.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile Deps.room_runtime
+    compile Deps.room_rxjava2
+    kapt Deps.room_compiler
+    compile Deps.kotlin_stdLib
 
     /* Testing */
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:2.12.0'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'android.arch.persistence.room:testing:1.0.0'
+    testCompile Deps.junit
+    testCompile Deps.mockito_core
+    androidTestImplementation Deps.test_runner
+    androidTestImplementation Deps.room_testing
 }
 repositories {
     mavenCentral()

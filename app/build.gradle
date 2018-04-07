@@ -59,39 +59,40 @@ dependencies {
     implementation project(':data')
 
     /* View */
-    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile Deps.appCompat_v7
 
     /* Core */
-    compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
-    compile 'com.google.dagger:dagger:2.12'
-    kapt 'com.google.dagger:dagger-compiler:2.12'
+    compile Deps.rxrelay
+    compile Deps.dagger
+    kapt Deps.dagger_compiler
+    implementation Deps.core_ktx
 
     /* Debug */
-    compile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
-    compile 'com.facebook.stetho:stetho:1.5.0'
-    compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    compile Deps.leakcanary_android
+    compile Deps.stetho
+    compile Deps.stetho_okhttp3
 
     /* Analytics */
-    compile "com.mixpanel.android:mixpanel-android:5.1.4"
+    compile Deps.mixpanel_android
 
     /* Various */
-    compile 'com.github.pwittchen:reactivenetwork-rx2:0.12.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile Deps.reactivenetwork_rx2
+    compile Deps.kotlin_stdLib
 
     /* Testing */
-    androidTestCompile 'junit:junit:4.12'
-    androidTestCompile 'org.mockito:mockito-core:2.0.17-beta'
-    androidTestCompile 'com.android.support.test:runner:1.0.1'
+    androidTestCompile Deps.junit
+    androidTestCompile Deps.mockito_core
+    androidTestCompile Deps.runner
 
-    androidTestCompile 'com.google.dagger:dagger:2.12'
-    kaptTest 'com.google.dagger:dagger-compiler:2.12'
-    kaptAndroidTest 'com.google.dagger:dagger-compiler:2.12'
+    androidTestCompile Deps.dagger
+    kaptTest Deps.dagger_compiler
+    kaptAndroidTest Deps.dagger_compiler
 
-    androidTestCompile 'com.android.support.test:rules:1.0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestCompile Deps.test_rules
+    androidTestCompile Deps.espresso_core
 
-    androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
-    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
+    androidTestCompile Deps.dexmaker
+    androidTestCompile Deps.dexmaker_mockito
 
 }
 repositories {
